@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    :root {
+      --svg-color-light: #ffffff; /* Dark grey for light mode */
+      --svg-color-dark: #ffffff; /* White for dark mode */
+    }
+
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: var(--svg-color-dark);
+      }
+    }
+
+    @media (prefers-color-scheme: light) {
+      path {
+        fill: var(--svg-color-light);
+      }
+    }
+  </style>
+  <path d="M19 12a1 1 0 0 1-1 1H8.414l1.293 1.293a1 1 0 0 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414l3-3a1 1 0 0 1 1.414 1.414L8.414 11H18a1 1 0 0 1 1 1z" />
+</svg>
