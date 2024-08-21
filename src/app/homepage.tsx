@@ -4,6 +4,7 @@ import { navIcons } from "../../public/icons/icons"
 import { images } from "../../public/images/images"
 import { SkillsSection } from "./page_sections/SkillsSection"
 import ProjectSection from "./page_sections/ProjectsSection"
+import { ContactSection } from "./page_sections/ContactSection"
 
 export const SectionStyles = `min-h-[100vh] p-2 md:p-4 sm:mb-[300px]`
 export default function HomePage() {
@@ -28,6 +29,7 @@ export default function HomePage() {
             </div>
             <SkillsSection />
             <ProjectSection />
+            <ContactSection />
         </div>
     )
 }
