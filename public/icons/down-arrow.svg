@@ -1,0 +1,16 @@
+<svg fill="rgb(185 28 28)" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 476.213 476.213" xml:space="preserve" stroke="rgb(185 28 28)">
+    <g transform="rotate(90, 238.106, 238.106)">
+      <g>
+        <polygon points="345.606,107.5 324.394,128.713 418.787,223.107 0,223.107 0,253.107 418.787,253.107 324.394,347.5 345.606,368.713 476.213,238.106"></polygon>
+        <animateTransform 
+          attributeName="transform" 
+          type="translate" 
+          values="0,0; 20,0; 0,0" 
+          dur="0.8s" 
+          repeatCount="indefinite" 
+          keyTimes="0; 0.5; 1" 
+          keySplines=".42,0,.58,1;.42,0,.58,1"/>
+      </g>
+    </g>
+  </svg>
+  

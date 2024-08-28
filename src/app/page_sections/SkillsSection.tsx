@@ -1,13 +1,15 @@
 
 import Skills from "../components/skillsLayout";
-import { SectionStyles } from "../homepage";
 import { SkillList } from "../data/skills";
+import { SectionStyles } from "../tools/styles/styles";
+
 
 const skillSectionStyles = `flex sm:flex-col md:gap-4 lg:gap-8 md:mt-10 `
 
 export function SkillsSection() {
   const skillsSectionContainer = `${SectionStyles} md:items-center h-full flex`;
   const skillsSectionStyles = `${skillSectionStyles} md:mb-8 flex`;
+  console.log(SectionStyles)
 
   return (
     <div className={skillsSectionContainer} id="Skills">

@@ -5,7 +5,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { pageIcons } from "../../../public/icons/icons";
 import { updateQueryStringValueWithoutNavigation, deleteQueryStringValueWithoutNavigation, getSearchParam } from "../tools/updateQueryStringValueWithoutNavigation";
-import { SectionStyles } from "../homepage";
+import { SectionStyles } from "../tools/styles/styles";
+
 
 interface ProjectPanelProps {
     project: project;

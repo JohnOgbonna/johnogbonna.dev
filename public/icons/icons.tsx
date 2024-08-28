@@ -6,11 +6,13 @@ import github from '../../public/icons/github.svg'
 import livelink from '../../public/icons/web-icon.svg'
 import linkedin from '../../public/icons/linkedin.svg'
 import email from '../../public/icons/email.svg'
+import downArrow from '../../public/icons/down-arrow.svg'
 
 
 export const navIcons = {
     burgerMenu: burgermenu,
     rightArrow: rightarrow,
+    downArrow: downArrow
 }
 
 export const pageIcons = {

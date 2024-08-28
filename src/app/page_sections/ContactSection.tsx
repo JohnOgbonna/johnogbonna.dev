@@ -1,18 +1,20 @@
-import { SectionStyles } from "../homepage";
+'use client'
 import { contactIcons } from "../../../public/icons/icons";
 import Image from "next/image";
 import { sendEmail } from "@/functions/sendemail";
-
+import { SectionStyles } from "../tools/styles/styles";
+import ContactIcons from "../components/contactIcons";
 const inputStyles = `w-full rounded-[3px] p-2 border-b-[1px] border-white h-[2rem] bg-slate-800 mb-4 focus:outline-none focus:ring-0`;
 export function ContactSection() {
+
     const sendMessage = (event: React.FormEvent<HTMLFormElement>) => {
         const e = event.target as HTMLFormElement
         event.preventDefault();
-        if(!e.senderName.value || !e.email.value || !e.message.value) {
+        if (!e.senderName.value || !e.email.value || !e.message.value) {
             alert(`Please fill in the field(s) ${!e.senderName.value ? 'Name' : ''} ${!e.email.value ? 'Email' : ''} ${!e.message.value ? 'Message' : ''}`);
             return
         }
-        if(!e.email.value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        if (!e.email.value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
             alert('Please enter a valid email');
             return
         }
@@ -33,21 +35,11 @@ export function ContactSection() {
                     </p>
                 </div>
                 <div>
-                    <div className={`flex justify-center gap-8`}>
-                        {
-                            Object.values(contactIcons).map((icon) => (
-                                <a
-                                    className={`cursor-pointer flex flex-col items-center hover:underline hover:scale-105 transition-all duration-500`} key={icon.name} href={icon.link} target="_blank">
-                                    <Image src={icon.icon} alt={icon.name} className={`w-[40px] h-[40px]`} />
-                                    <p className={`text-center`}>{icon.name}</p>
-                                </a>
-                            ))
-                        }
-                    </div>
+                    <ContactIcons />
                 </div>
             </div>
             <form className={`flex flex-col justify-center w-full max-w-[500px] md:max-w-[800px]`}
-            onSubmit={sendMessage}
+                onSubmit={sendMessage}
             >
                 <h2 className={`text-center text-[1.2rem] mb-2`}>Send Me A Message!</h2>
                 <div>

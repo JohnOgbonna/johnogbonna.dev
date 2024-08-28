@@ -1,0 +1,1 @@
+export const SectionStyles = 'min-h-[100vh] p-2 md:p-4 sm:mb-[300px]'
