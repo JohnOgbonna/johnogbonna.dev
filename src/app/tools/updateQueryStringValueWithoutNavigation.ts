@@ -48,3 +48,24 @@ export function getSearchParam(param: string) {
   // Return the value of the specified parameter
   return searchParams.get(param);
 }
+export function hasPathParameter(param: string) {
+  // Get the current URL from the browser
+  const url = window.location.href;
+
+  try {
+      // Create a URL object to easily extract parts of the URL
+      const urlObj = new URL(url);
+      
+      // Get the path from the URL
+      const path = urlObj.pathname;
+      
+      // Split the path into individual segments
+      const segments = path.split('/').filter(segment => segment !== '');
+
+      // Check if any segment matches the given parameter
+      return segments.includes(param);
+  } catch (error) {
+      console.error("Invalid URL:", error);
+      return false;
+  }
+}

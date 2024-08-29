@@ -5,6 +5,7 @@ export interface Section {
     name: string;
     link: string;
     description: string;
+    path?: 'about' | undefined
 }
 
 export interface SectionProps {
@@ -27,4 +28,19 @@ export type project = {
     videoSrc: string,
     repositoryLink: string,
     liveLink?: string
+}
+
+export type goalsSection = {
+    name: string,
+    description: string
+}
+export type goalsSectionSelect = {
+    goals: boolean,
+    lookingFor: boolean
+}
+
+export type hobbySectionSelect = {
+    skateboarding: boolean,
+    fitness: boolean,
+    music: boolean,
 }

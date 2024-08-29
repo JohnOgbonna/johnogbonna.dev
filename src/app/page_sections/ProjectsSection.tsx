@@ -13,13 +13,12 @@ interface ProjectPanelProps {
     onclick: (project: project | null) => void;
 }
 
-
 function ProjectPanel(props: ProjectPanelProps) {
     const { images, name, description } = props.project;
     const [expandDescription, setExpandDescription] = useState(false);
 
     return (
-        <div className={`w-[30%] md:hover:scale-105 hover:underline duration-300 mr-4 mt-8 shadow-custom1 p-2 rounded-md min-w-[350px]`}
+        <div className={`w-[30%] md:hover:scale-105 hover:underline duration-700 mr-4 mt-8 shadow-custom1 p-2 rounded-md min-w-[350px] ${expandDescription ? 'bg-slate-800 h-fit' : ''}`}
             onMouseEnter={() => setExpandDescription(true)}
             onMouseLeave={() => setExpandDescription(false)}
             onClick={() => props.onclick(props.project)}
@@ -28,7 +27,7 @@ function ProjectPanel(props: ProjectPanelProps) {
             <h3 className={`text-[1.2rem] `}>{name}</h3>
             <p
                 className={`${expandDescription
-                    ? 'md:line-clamp-none max-h-[400px] md:absolute md:z-10 md:bg-inherit'
+                    ? 'md:line-clamp-none max-h-[400px] md:z-10 md:bg-inherit '
                     : 'md:line-clamp-1 md:max-h-[40px] sm:line-clamp-2'
                     } duration-700 transition-all ease-in-out`}
             >
@@ -92,9 +91,7 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                 </div>
                 <div className={`sm:px-[2rem] h-fit md:self-center md:ml-3`}>
                     <h3 className={`text-[1.2rem] underline`}>{name}</h3>
-                    <p
-                        className={``}
-                    >
+                    <p>
                         {description}
                     </p>
                     <ul className={`mt-6`}>
@@ -108,10 +105,9 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                                 <Image src={pageIcons.liveLink} className={`w-[1.5rem]`} alt="live" /><a href={liveLink} target="_blank">Live Demo</a>
                                 </li>
                         }
-                        
                     </ul>
                     <div className={`mt-4`}>
-                        <p className={``}>Created With:</p>
+                        <p >Created With:</p>
                         <div className={`flex flex-wrap `}>
                             {
                                 toolsUsed.map(tool => <p key={`${tool}-key`} className={`text-[.8rem] rounded-[8px] p-1 sm:text-[13px] border border-slate-600 mr-2 last:mr-0 mb-2 text-center w-fit md:text-[.9rem]`}>{tool}</p>)

@@ -7,12 +7,14 @@ import livelink from '../../public/icons/web-icon.svg'
 import linkedin from '../../public/icons/linkedin.svg'
 import email from '../../public/icons/email.svg'
 import downArrow from '../../public/icons/down-arrow.svg'
+import upArrow from '../../public/icons/up-arrow.svg'
 
 
 export const navIcons = {
     burgerMenu: burgermenu,
     rightArrow: rightarrow,
-    downArrow: downArrow
+    downArrow: downArrow,
+    upArrow: upArrow
 }
 
 export const pageIcons = {
