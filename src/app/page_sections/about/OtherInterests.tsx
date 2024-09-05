@@ -4,6 +4,7 @@ import { hobbySectionSelect } from "@/app/tools/typesAndInterfaces";
 import { useState } from "react";
 import Image from "next/image";
 import { navIcons } from "../../../../public/icons/icons";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function OtherInterests() {
     const [expandedSections, setExpandedSections] = useState<hobbySectionSelect>({
@@ -30,27 +31,63 @@ export default function OtherInterests() {
             name: 'Skateboarding',
             description: "Believe it or not, my previous favorite sport and hobby was skateboarding! Growing up, I dreamed of becoming a sponsored skateboarder. While I never quite reached that level of skill (or got close for that matter), it was an amazing experience and an interesting hobby that brought a lot of fun into my life."
         },
+        {
+            id: 'Learning Spanish',
+            name: 'Learning Spanish',
+            description: `Recently, I've embarked on learning Spanish. It's such a fascinating language, and the culture that comes with it is equally captivating. My goal is to become fluent enough to use it on my travels, vacations, and to connect more deeply with Spanish-speaking communities. I'm excited to see where this journey will take me!`
+        }
     ]
     return (
-        <div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center max-w-[1024px]`} id={'OtherInterests'}>
-            <h2 className={`text-[1.5rem] font-bold `}>Other Interests and Hobbies</h2>
+        <motion.div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center max-w-[1024px]`} id={'OtherInterests'}
+            variants={{
+                hidden: { opacity: .01, x: -155 },
+                visible: { opacity: 1, x: 0 }
+            }}
+            initial="hidden"
+            whileInView={"visible"}
+            transition={{ duration: 0.5, delay: 0.25, ease: "easeInOut", x: { type: "spring", stiffness: 40 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
+            viewport={{ once: true }}
+        >
+            <motion.h2 className={`text-[1.5rem] font-bold mb-2`}
+                variants={{
+                    hidden: { opacity: .01, x: -155 },
+                    visible: { opacity: 1, x: 0 }
+                }}
+                initial="hidden"
+                whileInView={"visible"}
+                transition={{ duration: 0.5, delay: 0.5, ease: "easeInOut", x: { type: "spring", stiffness: 30 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
+            >Other Interests and Hobbies</motion.h2>
             <p className={`mb-4`}>What do I do for fun?</p>
             <ul>
                 {interests.map((interest) => {
                     const sectionSelected = expandedSections[interest.id as keyof hobbySectionSelect];
-                return (
-                    <li key={interest.id}
-                        className={`my-6 ${sectionSelected ? 'max-h-[1000px]' : 'max-h-[300px] overflow-hidden'} text-center transition-all duration-700 ease-in-out`}>
-                        <div className={`flex cursor-pointer justify-center transition-all duration-700 ease-in-out`}
-                            onClick={() => toggleSection(interest.id as keyof hobbySectionSelect)}
-                        >
-                            <h3 className={`font-bold text-[1.2rem]`}>{`•${interest.name}`}</h3>
-                            <Image src={expandedSections[interest.id as keyof hobbySectionSelect] ? navIcons.upArrow : navIcons.downArrow} alt='collapse/expand arrow' className={`w-5 `} />
-                        </div>
-                        {sectionSelected && <p className={`text-left`}>{interest.description}</p>}
-                    </li>
-                )})}
+                    return (
+                        <li key={interest.id}
+                            className={`my-6 ${sectionSelected ? 'max-h-[1000px]' : 'max-h-[300px] overflow-hidden'} text-center transition-all duration-700 ease-in-out`}>
+                            <div className={`flex cursor-pointer justify-center transition-all duration-700 ease-in-out`}
+                                onClick={() => toggleSection(interest.id as keyof hobbySectionSelect)}
+                            >
+                                <h3 className={`font-bold text-[1.2rem]`}>{`•${interest.name}`}</h3>
+                                <Image src={expandedSections[interest.id as keyof hobbySectionSelect] ? navIcons.upArrow : navIcons.downArrow} alt='collapse/expand arrow' className={`w-5 `} />
+                            </div>
+                            <AnimatePresence >
+                                {sectionSelected &&
+                                    <motion.p
+                                        key={expandedSections[interest.id as keyof hobbySectionSelect] ? 'expanded' : 'collapsed'}
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.7, ease: 'easeInOut' }}
+                                        className={`text-left`}
+                                    >
+                                        {interest.description}
+                                    </motion.p>
+                                }
+                            </AnimatePresence>
+                        </li>
+                    )
+                })}
             </ul>
-        </div>
+        </motion.div>
     )
 }

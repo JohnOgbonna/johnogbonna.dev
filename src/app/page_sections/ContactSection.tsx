@@ -1,12 +1,14 @@
 'use client'
-import { contactIcons } from "../../../public/icons/icons";
-import Image from "next/image";
+
 import { sendEmail } from "@/functions/sendemail";
 import { SectionStyles } from "../tools/styles/styles";
 import ContactIcons from "../components/contactIcons";
+import { motion,  } from "framer-motion";
+import { useRef,  } from "react";
 const inputStyles = `w-full rounded-[3px] p-2 border-b-[1px] border-white h-[2rem] bg-slate-800 mb-4 focus:outline-none focus:ring-0`;
-export function ContactSection() {
 
+export function ContactSection() {
+   
     const sendMessage = (event: React.FormEvent<HTMLFormElement>) => {
         const e = event.target as HTMLFormElement
         event.preventDefault();
@@ -20,14 +22,22 @@ export function ContactSection() {
         }
         sendEmail(e.senderName.value as string, e.email.value, e.message.value);
     }
-
+ 
     return (
-        <div
+        <motion.div
             className={`${SectionStyles} flex flex-col justify-center items-center gap-8 max-w-[500px] mx-auto lg:max-w-[1024px] lg:flex-row xl:max-w-[1280px]`}
             id="Contact"
+            variants = {{
+            hidden: {opacity: .01, x: -155},
+            visible: {opacity: 1, x: 0}
+            }}
+            initial = "hidden"
+            whileInView={"visible"}
+            transition = {{duration: 0.5, delay: 0.5, ease: "easeInOut", x: {type: "spring", stiffness: 30}, opacity: {duration: .8, delay: 0.2, ease: "easeInOut"}}}
         >
             <div>
-                <div className={`mb-8`}>
+                <div className={`mb-8`}
+                >
                     <h1 className={`text-center text-[1.5rem] underline`}>Contact Me</h1>
                     <p className="text-center">
                         I'm always looking for new opportunities. If you have any
@@ -38,8 +48,16 @@ export function ContactSection() {
                     <ContactIcons />
                 </div>
             </div>
-            <form className={`flex flex-col justify-center w-full max-w-[500px] md:max-w-[800px]`}
+            <motion.form className={`flex flex-col justify-center w-full max-w-[500px] md:max-w-[800px]`}
                 onSubmit={sendMessage}
+                id="Contact"
+                variants = {{
+                hidden: {opacity: .01, x: -155},
+                visible: {opacity: 1, x: 0}
+                }}
+                initial = "hidden"
+                animate={"visible"}
+                transition = {{duration: 0.5, delay: 0.55, ease: "easeInOut", x: {type: "spring", stiffness: 30}, opacity: {duration: .8, delay: 0.2, ease: "easeInOut"}}}
             >
                 <h2 className={`text-center text-[1.2rem] mb-2`}>Send Me A Message!</h2>
                 <div>
@@ -48,7 +66,7 @@ export function ContactSection() {
                     <textarea className={`${inputStyles} min-h-[200px]`} name="message" id="message" placeholder="Enter your message"></textarea>
                 </div>
                 <button type="submit" className={`bg-slate-800 text-white p-2 rounded-[3px] hover:scale-105 transition-all duration-500`}>Send Message!</button>
-            </form>
-        </div>
+            </motion.form>
+        </motion.div>
     );
 }

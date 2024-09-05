@@ -4,11 +4,20 @@ import { navIcons } from "../../public/icons/icons"
 import { images } from "../../public/images/images"
 import { SectionStyles } from "./tools/styles/styles"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 
 export default function HomePage() {
     return (
-        <div>
+        <motion.div
+        variants = {{
+            hidden: {opacity: .01, x: -155},
+            visible: {opacity: 1, x: 0}
+            }}
+            initial = "hidden"
+            whileInView={"visible"}
+            transition = {{duration: 0.5, delay: 0.55, ease: "easeInOut", x: {type: "spring", stiffness: 40}, opacity: {duration: .8, delay: 0.2, ease: "easeInOut"}}}
+        >
             <div className={`${SectionStyles} justify-center flex flex-col`} id={'Home'}>
                 <div className={`flex flex-col md:items-center md:gap-8 md:flex-row justify-around `}>
                     <div className={`sm:mt-[200px] sm:mb-[60px] sm:flex sm:flex-col sm:items-center`}>
@@ -27,6 +36,6 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

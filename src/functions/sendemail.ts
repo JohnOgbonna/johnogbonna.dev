@@ -23,7 +23,7 @@ function generateHtml(name: string, message: string) {
         <tr>
             <td align="center">
                 <table width="600" border="0" cellspacing="0" cellpadding="20"
-                    style="background-color: inherit; border: 1px solid #cccccc;">
+                    style="background-color: inherit; border: 1px solid #DC2626;">
                     <tr>
                         <td align="left" style="font-size: 16px;">
                             <h2 style="font-weight: bold; margin-top: 0;">Dear, ${name}, Thanks for visiting Johnogbonna.dev!</h2>

@@ -6,10 +6,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { hasPathParameter } from "../tools/updateQueryStringValueWithoutNavigation"
 import { usePathname, useRouter } from "next/navigation"
-
-
-
-
+import { motion } from "framer-motion"
 
 export const sections: Record<string, Section> = {
   Skills: {
@@ -98,15 +95,18 @@ function Sections({ enabled, isEnabled }: SectionProps) {
 export default function Navbar() {
   const [isExpanded, toggleExpanded] = useState<boolean>(false);
   const [_isAboutPage, setIsAboutPage] = useState(hasPathParameter('about'));
-  const router = useRouter();
-  const pathName = usePathname();
-
-  useEffect(() => {
-    setIsAboutPage(hasPathParameter('about'));
-  }, [pathName]);
 
   return (
-    <nav className="p-2 md:p-2 sticky top-0" id="nav">
+    <motion.nav
+      className="p-2 md:p-2 sticky top-0"
+      id="nav"
+      initial={{ y: -100, opacity: .25 }}  // Start off-screen and invisible
+      animate={{ y: 0, opacity: 1 }}     // Slide into view and become visible
+      transition={{
+        y: { duration: 0.8, ease: 'easeOut', delay: 0.25 },  // Immediate slide-down animation
+        opacity: { duration: 0.8, delay: 0.8 },  // Fade in after 0.8 seconds
+      }}
+    >
       <div className="flex justify-between items-center relative overflow-x-clip">
         <div className={`flex items-center`}>
           <a href="/"><h2 className="md:text-[1.2rem]">John Ogbonna</h2></a>
@@ -120,6 +120,6 @@ export default function Navbar() {
           onClick={() => toggleExpanded(!isExpanded)}
         />
       </div>
-    </nav>
+    </motion.nav>
   );
 }

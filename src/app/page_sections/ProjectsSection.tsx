@@ -6,11 +6,14 @@ import Image from "next/image";
 import { pageIcons } from "../../../public/icons/icons";
 import { updateQueryStringValueWithoutNavigation, deleteQueryStringValueWithoutNavigation, getSearchParam } from "../tools/updateQueryStringValueWithoutNavigation";
 import { SectionStyles } from "../tools/styles/styles";
+import { motion } from "framer-motion";
+import { fadeInHorizontalAnimationVariants } from "../tools/styles/animations";
 
 
 interface ProjectPanelProps {
     project: project;
     onclick: (project: project | null) => void;
+    index?: number
 }
 
 function ProjectPanel(props: ProjectPanelProps) {
@@ -18,10 +21,16 @@ function ProjectPanel(props: ProjectPanelProps) {
     const [expandDescription, setExpandDescription] = useState(false);
 
     return (
-        <div className={`w-[30%] md:hover:scale-105 hover:underline duration-700 mr-4 mt-8 shadow-custom1 p-2 rounded-md min-w-[350px] ${expandDescription ? 'bg-slate-800 h-fit' : ''}`}
+        <motion.div className={`w-[30%] md:hover:scale-105 hover:underline duration-700 mr-4 mt-8 shadow-custom1 p-2 rounded-md min-w-[350px] ${expandDescription ? 'bg-slate-800 h-fit' : ''}`}
             onMouseEnter={() => setExpandDescription(true)}
             onMouseLeave={() => setExpandDescription(false)}
             onClick={() => props.onclick(props.project)}
+            variants={fadeInHorizontalAnimationVariants}
+            initial="initial"
+            whileInView={"animate"}
+            transition={{ duration: 0.7 }}
+            custom={props.index}
+            viewport={{ once: true }}
         >
             <Image src={images[0]} alt={name} className={`rounded-[5px]`} />
             <h3 className={`text-[1.2rem] `}>{name}</h3>
@@ -33,7 +42,7 @@ function ProjectPanel(props: ProjectPanelProps) {
             >
                 {description}
             </p>
-        </div>
+        </motion.div>
     );
 }
 
@@ -101,9 +110,9 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                         </li>
                         {
                             liveLink &&
-                            <li className={`underline flex duration-500 hover:scale-105 transition-all`}> 
+                            <li className={`underline flex duration-500 hover:scale-105 transition-all`}>
                                 <Image src={pageIcons.liveLink} className={`w-[1.5rem]`} alt="live" /><a href={liveLink} target="_blank">Live Demo</a>
-                                </li>
+                            </li>
                         }
                     </ul>
                     <div className={`mt-4`}>
@@ -146,12 +155,20 @@ export default function ProjectSection() {
 
     return (
         <div id={'Projects'} className={` ${SectionStyles} min-h-[100vh] p-4 flex flex-col justify-center`}>
-            <h2 className={`text-[1.5rem]`}>Projects</h2>
+            <motion.h2 className={`text-[1.5rem]`}
+                variants={{
+                    hidden: { opacity: .01, x: -155 },
+                    visible: { opacity: 1, x: 0 }
+                }}
+                initial="hidden"
+                whileInView={"visible"}
+                transition={{ duration: 0.5, delay: 0.5, ease: "easeInOut", x: { type: "spring", stiffness: 30 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
+            >Projects</motion.h2>
             <div className={`flex items-center`}>
                 <div className={`flex flex-wrap rounded-[8px] justify-center`}
                 >
-                    {projectsList.map((project) => (
-                        <ProjectPanel key={project.name} project={project} onclick={projectOnclick}
+                    {projectsList.map((project, index) => (
+                        <ProjectPanel key={project.name} project={project} onclick={projectOnclick} index={index}
                         />
                     ))}
                 </div>

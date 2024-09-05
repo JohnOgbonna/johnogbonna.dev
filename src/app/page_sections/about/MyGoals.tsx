@@ -1,9 +1,10 @@
 'use client'
 import { SectionStyles } from "@/app/tools/styles/styles";
-import { goalsSectionSelect } from "@/app/tools/typesAndInterfaces";
+import { goalsSectionSelect, hobbySectionSelect } from "@/app/tools/typesAndInterfaces";
 import { useState } from "react";
 import { navIcons } from "../../../../public/icons/icons";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function MyGoals() {
     const [expandedSections, setExpandedSections] = useState<goalsSectionSelect>({
@@ -28,26 +29,51 @@ export default function MyGoals() {
 
     ]
     return (
-        <div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center  max-w-[1024px]`} id={'Goals'}>
-            <h2 className={`text-[1.5rem] mb-4`}>My Goal • What am I looking for?</h2>
+        <motion.div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center  max-w-[1024px]`} id={'Goals'}
+            variants={{
+                hidden: { opacity: .01, x: -155 },
+                visible: { opacity: 1, x: 0 }
+            }}
+            initial="hidden"
+            whileInView={"visible"}
+            transition={{ duration: 0.5, delay: 0.25, ease: "easeInOut", x: { type: "spring", stiffness: 40 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
+            viewport={{ once: true }}
+        >
+            <motion.h2 className={`text-[1.5rem] font-bold mb-4`}
+                variants={{
+                    hidden: { opacity: .01, x: -155 },
+                    visible: { opacity: 1, x: 0 }
+                }}
+                initial="hidden"
+                whileInView={"visible"}
+                transition={{ duration: 0.5, delay: 0.5, ease: "easeInOut", x: { type: "spring", stiffness: 30 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
+            >My Goal • What am I looking for?</motion.h2>
             {sections.map((section) => {
                 const sectionSelected = expandedSections[section.id as keyof goalsSectionSelect];
                 return (
-                    <div className={`mb-8 flex flex-col justify-center items-center underline]`} key={section.id}>
-                        <div className={`flex cursor-pointer text-[1.2rem] ${sectionSelected ? 'max-h-[1000px] underline' : 'max-h-[200px]'} transition-all ease-in-out duration-700 `}
+                    <div className={`mb-8 flex flex-col justify-center items-center underline] ${sectionSelected ? 'max-h-[1000px]' : 'max-h-[250px] overflow-hidden'}`} key={section.id}>
+                        <div className={`flex cursor-pointer text-[1.2rem]'} transition-all ease-in-out duration-700 `}
                             onClick={() => toggleSection(section.id as keyof goalsSectionSelect)}
                         >
-                            <h2 className={``}>{section.name}</h2>
+                            <h2 className={`text-[1.2rem]`}>{section.name}</h2>
                             <Image src={sectionSelected ? navIcons.upArrow : navIcons.downArrow} alt='collapse/expand arrow' className={`w-6 `} />
                         </div>
-                        <div className={`${sectionSelected ? 'max-h-[750px]' : 'max-h-0 overflow-hidden'} transition-all duration-500`}>
-                            <p className={`mb-4 `}>{section.description}</p>
-                            {section.id === 'lookingFor' && <p className={`text-red-600 hover:underline cursor-pointer`}><a href="/#Skills">See my skills here </a></p>}
-                        </div>
+                        <AnimatePresence>
+                            {sectionSelected && <motion.div
+                                key={expandedSections[section.id as keyof goalsSectionSelect] ? 'expanded' : 'collapsed'}
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                            >
+                                <p className={`mb-4 `}>{section.description}</p>
+                                {section.id === 'lookingFor' && <p className={`text-red-600 hover:underline cursor-pointer`}><a href="/#Skills">See my skills here </a></p>}
+                            </motion.div>}
+                        </AnimatePresence>
                     </div>
                 )
             })}
 
-        </div>
+        </motion.div>
     )
 }
