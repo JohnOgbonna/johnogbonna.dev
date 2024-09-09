@@ -1,14 +1,14 @@
 'use client'
 import { projectsList } from "../data/projects";
 import { project } from "../tools/typesAndInterfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { pageIcons } from "../../../public/icons/icons";
-import { updateQueryStringValueWithoutNavigation, deleteQueryStringValueWithoutNavigation, getSearchParam } from "../tools/updateQueryStringValueWithoutNavigation";
+import { updateQueryStringValueWithoutNavigation, deleteQueryStringValueWithoutNavigation } from "../tools/updateQueryStringValueWithoutNavigation";
 import { SectionStyles } from "../tools/styles/styles";
 import { motion } from "framer-motion";
-import { fadeInHorizontalAnimationVariants } from "../tools/styles/animations";
-
+import { delayedFadeInAnimationVariants, fadeInAnimationVariants, fadeInHorizontalAnimationVariants } from "../tools/styles/animations";
+import { useSearchParams } from "next/navigation";
 
 interface ProjectPanelProps {
     project: project;
@@ -117,9 +117,19 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                     </ul>
                     <div className={`mt-4`}>
                         <p >Created With:</p>
-                        <div className={`flex flex-wrap `}>
+                        <div className={`flex flex-wrap`}>
                             {
-                                toolsUsed.map(tool => <p key={`${tool}-key`} className={`text-[.8rem] rounded-[8px] p-1 sm:text-[13px] border border-slate-600 mr-2 last:mr-0 mb-2 text-center w-fit md:text-[.9rem]`}>{tool}</p>)
+                                toolsUsed.map((tool, index) =>
+                                    <motion.p
+                                        key={`${tool}-key`}
+                                        className={`text-[.8rem] rounded-[8px] p-1 sm:text-[13px] border border-slate-600 mr-2 last:mr-0 mb-2 text-center w-fit md:text-[.9rem]`}
+                                        variants={delayedFadeInAnimationVariants}
+                                        initial="initial"
+                                        whileInView={"animate"}
+                                        custom={index}
+                                        viewport={{ once: true }}
+                                    >{tool}
+                                    </motion.p>)
                             }
                         </div>
                     </div>
@@ -136,9 +146,17 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
 }
 
 export default function ProjectSection() {
+    const searchParams = useSearchParams();
+    const projectId = searchParams.get('project');
+
     const [largeView, enableLargeView] = useState<project | null>(
-        projectsList.find((project) => project.id === getSearchParam('project')) ?? null
+        projectsList.find((project) => project.id === projectId) ?? null
     );
+    
+    useEffect(() => {
+        const project = projectsList.find((project) => project.id === projectId) ?? null;
+        enableLargeView(project);
+    }, [projectId]);
 
     const projectOnclick = (project: project | null) => {
         const params = new URLSearchParams();

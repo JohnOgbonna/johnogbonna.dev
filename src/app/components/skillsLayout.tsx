@@ -27,12 +27,14 @@ export default function Skills(props: Props) {
                         <h2 className={`text-[1.3rem] underline`}>{props.skillSection.name}</h2>
                         <p>{props.skillSection.description}</p>
                     </div>
-                    <p className={`mb-4 text-center italic`}>{`${props.skillSection.name} tools I use:`}</p>
+                    {props.skillSection.name !== 'Cloud' && <p className={`mb-4 text-center italic`}>{`${props.skillSection.name} tools I use:`}</p>
+                        || props.skillSection.name === 'Cloud' && <p className={`mb-4 text-center italic`}>{`Cloud Experience/Certifications:`}</p>
+                    }
                 </motion.div>
                 <ul className={`flex flex-wrap justify-center`}>
                     {
                         props.skillSection.programs.map((program, index) => (
-                            <motion.li className={`rounded-[8px] p-1 sm:text-[13px] border border-slate-600 mr-2 last:mr-0 mb-2 text-center w-fit`}
+                            <motion.li className={`rounded-[8px] p-1 sm:text-[13px] border border-slate-600 mr-2 last:mr-0 mb-2 text-center w-fit hover:scale-105 duration-500 transition-all ease-in-out cursor-default`}
                                 key={`${program}key`}
                                 variants={fadeInAnimationVariants}
                                 initial="initial"

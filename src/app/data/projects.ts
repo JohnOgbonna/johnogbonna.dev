@@ -9,6 +9,7 @@ export const cruncheeMunchies: project = {
     images: Projects.CruncheeMunchies,
     videoSrc: '',
     repositoryLink: 'https://github.com/JohnOgbonna/cruncheemunchiesClient',
+    liveLink: 'https://cruncheemunchies-ee6b3.web.app/'
 }
 
 export const chatSocket: project = {
@@ -46,11 +47,11 @@ export const randomNumbers: project = {
 export const devSite: project = {
     id: 'devSite',
     name: 'Personal Dev Site (This Website)',
-    description: 'A personal website built with front end tools like React.js and SASS / SCSS',
-    toolsUsed: ['HTML', 'SCSS', 'CSS', 'Javascript', 'React.js'],
+    description: 'A personal website built with front end tools like Next.js, React.js and WailwindCSS',
+    toolsUsed: ['HTML', 'TailwindCSS', 'Javascript', 'React.js', 'Next.js', 'Vercel'],
     images: Projects.DevSite,
     videoSrc: '',
-    repositoryLink: 'https://github.com/JohnOgbonna/johnogbonna.com',
+    repositoryLink: 'https://github.com/JohnOgbonna/johnogbonna.dev',
 }
 
 

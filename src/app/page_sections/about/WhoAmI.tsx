@@ -5,6 +5,7 @@ import aboutMe1 from "../../../../public/images/about-me-1.jpg";
 import Image from "next/image";
 import { navIcons } from "../../../../public/icons/icons";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function WhoAmI() {
     return (
@@ -16,6 +17,7 @@ export default function WhoAmI() {
             initial = "hidden"
             whileInView={"visible"}
             transition = {{duration: 0.5, delay: 0.55, ease: "easeInOut", x: {type: "spring", stiffness: 40}, opacity: {duration: .8, delay: 0.2, ease: "easeInOut"}}}
+            viewport={{ once: true }}
         >
             <div className={`mb-8 max-w-[500px] mr-4`}>
                 <motion.h2 className={`text-[1.5rem] font-bold`}
@@ -27,15 +29,15 @@ export default function WhoAmI() {
                 whileInView={"visible"}
                 transition={{ duration: 0.5, delay: 0.5, ease: "easeInOut", x: { type: "spring", stiffness: 30 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
                 >Who am I?</motion.h2>
-                <p className={`text-left`}>I'm John Ogbonna, a Full Stack Developer with Cloud Experience and Certifications. I'm always learning something new, and always looking to connect!</p>
+                <p className={`text-center md:text-left`}>{`I'm John Ogbonna, a Full Stack Developer with Cloud Experience and Certifications. I'm always learning something new, and always looking to connect!`}</p>
                 <h3 className={`font-bold my-4`}>Connect with me:</h3>
                 <ContactIcons />
-                <a href={`#Goals`}>
+                <Link href={`#Goals`}>
                     <div className={`mt-6 flex justify-center`}>
                         <p>Get to Know Me</p>
                         <Image src={navIcons.downArrow} alt='rightarrow' className={`w-8 `} />
                     </div>
-                </a>
+                </Link>
             </div>
             <div>
                 <Image src={aboutMe1} alt="Profile Picture" className={`sm:w-[300px] md:rounded-[100%] md:w-[300px] sm:aspect-square sm:object-cover sm:mx-auto`} />

@@ -1,10 +1,11 @@
 'use client'
 import { SectionStyles } from "@/app/tools/styles/styles";
-import { goalsSectionSelect, hobbySectionSelect } from "@/app/tools/typesAndInterfaces";
+import { goalsSectionSelect } from "@/app/tools/typesAndInterfaces";
 import { useState } from "react";
 import { navIcons } from "../../../../public/icons/icons";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 
 export default function MyGoals() {
     const [expandedSections, setExpandedSections] = useState<goalsSectionSelect>({
@@ -14,7 +15,6 @@ export default function MyGoals() {
     const toggleSection = (section: keyof goalsSectionSelect) => {
         setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
     }
-
     const sections = [
         {
             id: "goals",
@@ -26,10 +26,9 @@ export default function MyGoals() {
             name: "What am I looking for?",
             description: "I am currenly looking for a full-time Full Stack Software Developer positon. I am open to remote, hybrid, and in-person opportunities all across Canada. I am also looking for opportunities to collaborate, help with, and contribute to projects. Don't hesitate to reach out if you have any questions, or if you want to get in touch!"
         }
-
     ]
     return (
-        <motion.div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center  max-w-[1024px]`} id={'Goals'}
+        <motion.div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center  max-w-[1024px] sm:mb-0`} id={'Goals'}
             variants={{
                 hidden: { opacity: .01, x: -155 },
                 visible: { opacity: 1, x: 0 }
@@ -67,13 +66,12 @@ export default function MyGoals() {
                                 transition={{ duration: 0.5, ease: 'easeInOut' }}
                             >
                                 <p className={`mb-4 `}>{section.description}</p>
-                                {section.id === 'lookingFor' && <p className={`text-red-600 hover:underline cursor-pointer`}><a href="/#Skills">See my skills here </a></p>}
+                                {section.id === 'lookingFor' && <p className={`text-red-600 hover:underline cursor-pointer`}><Link href="/#Skills">See my skills here </Link></p>}
                             </motion.div>}
                         </AnimatePresence>
                     </div>
                 )
             })}
-
         </motion.div>
     )
 }

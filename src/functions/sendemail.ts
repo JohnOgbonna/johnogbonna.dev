@@ -22,16 +22,18 @@ function generateHtml(name: string, message: string) {
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: inherit;">
         <tr>
             <td align="center">
-                <table width="600" border="0" cellspacing="0" cellpadding="20"
+                <table width="700" border="0" cellspacing="0" cellpadding="20" "
                     style="background-color: inherit; border: 1px solid #DC2626;">
                     <tr>
-                        <td align="left" style="font-size: 16px;">
-                            <h2 style="font-weight: bold; margin-top: 0;">Dear, ${name}, Thanks for visiting Johnogbonna.dev!</h2>
+                        <td align="left" style="font-size: 16px; color: inherit;">
+                            <h2 style="font-weight: bold; margin-top: 0;">Dear ${name}, <br>Thanks for visiting Johnogbonna.dev!</h2>
                             <p>Hi, ${name}!</p>
-                            <p>I appreciate you taking the time to visit my website and also leaving me a message.</p>
-                            <p><span style="font-weight: bold;">Your Message:</span>${message}</p>
-                            <p>I'll reach out to you soon!</p>
-                            <p>You can reach me directly at my personal email: <a href="mailto:johnny.ogb@gmail.com">johnny.ogb@gmail.com</a></p>
+                            <p>I appreciate you taking the time to visit my website and leaving me a message!</p>
+                            <p><span style="font-weight: bold; text-decoration: underline;">Your Message:</span>${' ' + message}</p>
+                            <p style="color: #DC2626; font-weight: bold;">I'll reach out to you soon!</p>
+                            <p>Connect with me online!: </p>
+                            <div><span style="margin-right: 10px;"><a href="https://www.linkedin.com/in/johnogbonna/">Linkedin</a></span><span><a href="https://github.com/JohnOgbonna">Github</a></span></div>
+                            <p>You can also reach me directly at my personal email: <a href="mailto:johnny.ogb@gmail.com">johnny.ogb@gmail.com</a></p>
                             <p>Best regards,<br>John Ogbonna</p>
                         </td>
                     </tr>
@@ -45,8 +47,9 @@ function generateHtml(name: string, message: string) {
     `
 }
 
-export async function sendEmail(name: string, email: string, message: string) {
+export async function sendEmail(name: string, email: string, message: string,) {
     'use server'
+    let success : boolean
     const resend = new Resend(process.env.RESEND_API_KEY)
     const { data, error } = await resend.emails.send({
         from: 'no-reply@johnogbonna.com',
@@ -55,10 +58,10 @@ export async function sendEmail(name: string, email: string, message: string) {
         html: generateHtml(name, message)
     })
     if (error) {
-        // alert('Whoops! Something went wrong, try sending again later!')
-        console.log(error)
+        success = false
     }
     else {
-        alert('Thanks for your message! I will get back to you soon!')
+        success = true
     }
+    return success
 }

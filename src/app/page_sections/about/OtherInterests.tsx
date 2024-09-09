@@ -1,7 +1,7 @@
 'use client'
 import { SectionStyles } from "@/app/tools/styles/styles"
 import { hobbySectionSelect } from "@/app/tools/typesAndInterfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { navIcons } from "../../../../public/icons/icons";
 import { AnimatePresence, motion } from "framer-motion";
@@ -38,7 +38,7 @@ export default function OtherInterests() {
         }
     ]
     return (
-        <motion.div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center max-w-[1024px]`} id={'OtherInterests'}
+        <motion.div className={`${SectionStyles} mx-auto flex flex-col justify-center text-center items-center max-w-[1024px] sm:mb-0`} id={'OtherInterests'}
             variants={{
                 hidden: { opacity: .01, x: -155 },
                 visible: { opacity: 1, x: 0 }
@@ -68,7 +68,7 @@ export default function OtherInterests() {
                                 onClick={() => toggleSection(interest.id as keyof hobbySectionSelect)}
                             >
                                 <h3 className={`font-bold text-[1.2rem]`}>{`•${interest.name}`}</h3>
-                                <Image src={expandedSections[interest.id as keyof hobbySectionSelect] ? navIcons.upArrow : navIcons.downArrow} alt='collapse/expand arrow' className={`w-5 `} />
+                                <Image src={expandedSections[interest.id as keyof hobbySectionSelect] ? navIcons.upArrow : navIcons.downArrow} alt='collapse/expand arrow' className={`w-5`} />
                             </div>
                             <AnimatePresence >
                                 {sectionSelected &&
