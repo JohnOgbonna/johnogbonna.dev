@@ -32,7 +32,9 @@ export function SkillsSection() {
             {'View my latest resume '}
             <a
               className="text-red-600 underline"
-              href={process.env.RESUME_DOWNLOAD_LINK}
+              href={process.env.NEXT_PUBLIC_RESUME_DOWNLOAD_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               here
             </a>

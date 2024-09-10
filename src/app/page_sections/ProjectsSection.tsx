@@ -147,7 +147,7 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
 
 export default function ProjectSection() {
     const searchParams = useSearchParams();
-    const projectId = searchParams.get('project');
+    const projectId = searchParams?.get('project');
 
     const [largeView, enableLargeView] = useState<project | null>(
         projectsList.find((project) => project.id === projectId) ?? null
