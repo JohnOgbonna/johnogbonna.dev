@@ -31,9 +31,8 @@ export function SkillsSection() {
           <h3 className="text-center">
             {'View my latest resume '}
             <a
-              download="../../data/files/John-Ogbonna-2024-software-resume"
               className="text-red-600 underline"
-              href="/data/files/John-Ogbonna-2024-software-resume"
+              href={process.env.RESUME_DOWNLOAD_LINK}
             >
               here
             </a>

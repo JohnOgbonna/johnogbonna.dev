@@ -124,7 +124,7 @@ export default function Navbar() {
     >
       <div className="flex justify-between items-center relative overflow-x-clip">
         <div className={`flex items-center`}>
-          <a href={`${aboutSection ? '/' : '/about'}`}><h2 className="md:text-[1.2rem] hover:underline">John Ogbonna</h2></a>
+          <Link href={`${aboutSection ? '/' : '/about'}`}><h2 className="md:text-[1.2rem] hover:underline">John Ogbonna</h2></Link>
         </div>
         <Sections enabled={isExpanded} isEnabled={toggleExpanded} />
         <Image
