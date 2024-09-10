@@ -12,7 +12,7 @@ export function SkillsSection() {
   return (
     <div className={`${SectionStyles}`} id="Skills"
     >
-      <div className={`md:items-center min-h-[100vh] flex`}>
+      <div className={`md:items-center min-h-[800px] flex`}>
         <div>
           <motion.h2 className="text-[1.5rem] sm:mb-8"
             variants={{

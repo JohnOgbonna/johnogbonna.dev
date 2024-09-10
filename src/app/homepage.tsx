@@ -19,7 +19,7 @@ export default function HomePage() {
             transition={{ duration: 0.5, delay: 0.55, ease: "easeInOut", x: { type: "spring", stiffness: 40 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
             viewport={{ once: true }}
         >
-            <div className={`${SectionStyles} justify-center flex flex-col sm:mb-300`} id={'Home'}>
+            <div className={`${SectionStyles} justify-center flex flex-col sm:mb-0`} id={'Home'}>
                 <div className={`flex flex-col items-center md:gap-8 md:flex-row justify-around `}>
                     <div className={` sm:mb-[60px] sm:flex sm:flex-col sm:items-center`}>
                         <div>

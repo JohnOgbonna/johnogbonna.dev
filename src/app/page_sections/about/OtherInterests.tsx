@@ -49,6 +49,7 @@ export default function OtherInterests() {
             viewport={{ once: true }}
         >
             <motion.h2 className={`text-[1.5rem] font-bold mb-2`}
+            id={'OtherInterests'}
                 variants={{
                     hidden: { opacity: .01, x: -155 },
                     visible: { opacity: 1, x: 0 }
