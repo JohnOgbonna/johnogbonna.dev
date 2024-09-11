@@ -72,8 +72,8 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                 if (e.target === e.currentTarget) props.onclick(null);
             }}
         >
-            <div className={`text-white md:flex md:items-center`}>
-                <div className={``}>
+            <div className={`text-white md:flex md:items-center max-w-[1080px]`}>
+                <div>
                     <div className={`flex justify-center max-h-[600px]`}>
 
                         {displayImage > 0 ? <Image src={pageIcons.scrollArrow} alt='leftarrow' className={`w-8 md:w-12 hover:scale-110 duration-300 `}
@@ -122,7 +122,7 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                                 toolsUsed.map((tool, index) =>
                                     <motion.p
                                         key={`${tool}-key`}
-                                        className={`text-[.8rem] rounded-[8px] p-1 sm:text-[13px] border border-slate-600 mr-2 last:mr-0 mb-2 text-center w-fit md:text-[.9rem]`}
+                                        className={`text-[.8rem] cursor-default rounded-[8px] p-1 sm:text-[13px] border border-slate-600 mr-2 last:mr-0 mb-2 text-center w-fit md:text-[.9rem]`}
                                         variants={delayedFadeInAnimationVariants}
                                         initial="initial"
                                         whileInView={"animate"}
@@ -137,7 +137,7 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                 <Image
                     src={pageIcons.closeIcon}
                     onClick={() => props.onclick(null)}
-                    className={`md:self-start text-[1.5rem] sm:fixed sm:top-5 sm:right-5 sm:cursor-pointer w-[1.2rem]`}
+                    className={`md:self-start text-[1.5rem] fixed sm:top-5 md:top-20 right-5 cursor-pointer w-[1.2rem] lg:static lg:top-0 hover:scale-125 duration-500 transition-all ease-in-out`}
                     alt="close"
                 />
             </div>
@@ -157,6 +157,14 @@ export default function ProjectSection() {
         const project = projectsList.find((project) => project.id === projectId) ?? null;
         enableLargeView(project);
     }, [projectId]);
+
+    useEffect(() => {
+        if(largeView) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    },[largeView])
 
     const projectOnclick = (project: project | null) => {
         const params = new URLSearchParams();

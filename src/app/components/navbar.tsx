@@ -71,7 +71,7 @@ function Sections({ enabled, isEnabled }: SectionProps) {
         {Object.values(sections).map((section) => {
           return (
             aboutSection && section.path && section.path === 'about' &&
-            <li key={section.name} className={`md:pr-4 md:last:pr-0 hover:underline ${smallListStyles} sm:text-white`}>
+            <li key={section.name} className={`md:pr-4 md:last:pr-0 hover:underline ${smallListStyles} sm:text-white sm:text-[1.2rem]`}>
               <Link href={section.link} className="sm:text-inherit"
                 onClick={() => isEnabled(false)}
               >
@@ -80,7 +80,7 @@ function Sections({ enabled, isEnabled }: SectionProps) {
             </li>
 
             || !aboutSection && (!section.path || section.path !== 'about') &&
-            <li key={section.name} className={`md:pr-4 md:last:pr-0 hover:underline ${smallListStyles} sm:text-white`}>
+            <li key={section.name} className={`md:pr-4 md:last:pr-0 hover:underline ${smallListStyles} sm:text-white sm:text-[1.2rem]`}>
               <Link href={section.link} className="sm:text-inherit"
                 onClick={() => isEnabled(false)}
               >
@@ -89,7 +89,7 @@ function Sections({ enabled, isEnabled }: SectionProps) {
             </li>
           )
         })}
-        <li key={'linkToAalternateSection'} className={`cursor-pointer hover:underline md:border-l-2 md:border-red-600 md:pl-3 ${smallListStyles}`}
+        <li key={'linkToAalternateSection'} className={`cursor-pointer hover:underline md:border-l-2 md:border-red-600 md:pl-3 ${smallListStyles} sm:text-[1.2rem]`}
           onClick={() => isEnabled(false)}>
           <Link href={`${aboutSection ? '/' : '/about'}`}>{aboutSection ? 'Home Page' : 'About Me'}</Link></li>
       </ul>
@@ -124,7 +124,7 @@ export default function Navbar() {
     >
       <div className="flex justify-between items-center relative overflow-x-clip">
         <div className={`flex items-center`}>
-          <Link href={`${aboutSection ? '/' : '/about'}`}><h2 className="md:text-[1.2rem] hover:underline">John Ogbonna</h2></Link>
+          <Link href={`${aboutSection ? '/' : '/about'}`}><h2 className="text-[1.3rem] md:text-[1.2rem] hover:underline">John Ogbonna</h2></Link>
         </div>
         <Sections enabled={isExpanded} isEnabled={toggleExpanded} />
         <Image

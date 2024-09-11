@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function WhoAmI() {
     return (
-        <motion.div className={`${SectionStyles} flex flex-col justify-center text-center md:flex-row items-center md:justify-between max-w-[1024px] mx-auto `} id={'WhoAmI'}
+        <motion.div className={`${SectionStyles} flex flex-col justify-center text-center md:flex-row items-center md:justify-between max-w-[1024px] mx-auto`} id={'WhoAmI'}
         variants = {{
             hidden: {opacity: .01, x: -155},
             visible: {opacity: 1, x: 0}
@@ -20,7 +20,7 @@ export default function WhoAmI() {
             viewport={{ once: true }}
         >
             <div className={`mb-8 max-w-[500px] mr-4`}>
-                <motion.h2 className={`text-[1.5rem] font-bold`}
+                <motion.h2 className={`text-[1.5rem] font-bold mb-4`}
                 variants={{
                     hidden: { opacity: .01, x: -155 },
                     visible: { opacity: 1, x: 0 }

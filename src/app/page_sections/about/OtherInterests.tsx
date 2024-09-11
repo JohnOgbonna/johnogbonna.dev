@@ -48,7 +48,7 @@ export default function OtherInterests() {
             transition={{ duration: 0.5, delay: 0.25, ease: "easeInOut", x: { type: "spring", stiffness: 40 }, opacity: { duration: .8, delay: 0.2, ease: "easeInOut" } }}
             viewport={{ once: true }}
         >
-            <motion.h2 className={`text-[1.5rem] font-bold mb-2`}
+            <motion.h2 className={`text-[1.5rem] font-bold mb-4`}
             id={'OtherInterests'}
                 variants={{
                     hidden: { opacity: .01, x: -155 },
