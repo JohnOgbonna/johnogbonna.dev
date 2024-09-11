@@ -1,5 +1,4 @@
 'use client'
-import { animate } from "framer-motion/dom";
 import { skill } from "../tools/typesAndInterfaces";
 import { motion } from "framer-motion";
 import { fadeInAnimationVariants } from "../tools/styles/animations";
