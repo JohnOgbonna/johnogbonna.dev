@@ -14,7 +14,7 @@ export const SkillList: skill[]= [
     {
         name: 'Cloud',
         description: "As a certified AWS cloud practitioner, I have a solid grasp of various AWS tools, including EC2, Elastic Beanstalk, Dynamo DB, and a more. Also, I have hands-on experience working in diverse cloud environments, such as Azure, where I've effectively utilized deployment tools like Jenkins. This skill set allows me to navigate seamlessly across different platforms, ensuring efficient deployment and management within cloud environments.",
-        programs: ['AWS Certified Developer Associate','AWS Certified Cloud Practitioner', 'Jenkins', 'Firebase', 'Vercel']
+        programs: ['AWS Certified Developer Associate','AWS Certified Cloud Practitioner', 'Jenkins', 'Firebase', 'Vercel', 'Render']
     },
     
 ]

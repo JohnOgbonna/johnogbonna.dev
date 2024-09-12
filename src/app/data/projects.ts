@@ -5,7 +5,7 @@ export const cruncheeMunchies: project = {
     id: 'cruncheeMunchies',
     name: 'Crunchee Munchies Website',
     description: "A web client for viewing Crunchee Munchies products and requesting orders",
-    toolsUsed: ['HTML', 'SCSS', 'CSS', 'Javascript', 'React.js', 'Node.js', 'Express.js'],
+    toolsUsed: ['HTML', 'SCSS', 'CSS', 'Javascript', 'React.js', 'Node.js', 'Express.js', 'Firebase', 'Render'],
     images: Projects.CruncheeMunchies,
     videoSrc: '',
     repositoryLink: 'https://github.com/JohnOgbonna/cruncheemunchiesClient',
@@ -16,28 +16,28 @@ export const chatSocket: project = {
     id: 'chatSocket',
     name: 'Chat Socket',
     description: 'A realtime chat application built with Websockets. Includes features like chat history, user search and authentication, message delete, and more.',
-    toolsUsed: ['HTML', 'Tailwind CSS', 'Typescript', 'React.js', 'Node.js', 'Express.js', 'Websockets'],
+    toolsUsed: ['HTML', 'Tailwind CSS', 'Typescript', 'React.js', 'Node.js', 'Express.js', 'Websockets', 'Dynamo DB'],
     images: Projects.ChatSocket,
     videoSrc: '',
-    repositoryLink: 'https://github.com/JohnOgbonna/ChatSocket-client',
+    repositoryLink: 'https://github.com/JohnOgbonna/ChatSocket-server',
 }
 
 export const bioWebsite: project = {
     id: 'bioWebsite',
     name: 'Bio Website',
     description: 'A personal website built with front end tools like React.js and SASS / SCSS',
-    toolsUsed: ['HTML', 'SCSS', 'CSS', 'Javascript', 'React.js'],
+    toolsUsed: ['HTML', 'SCSS', 'CSS', 'Javascript', 'React.js', 'Firebase'],
     images: Projects.BioWebsite,
     videoSrc: '',
     repositoryLink: 'https://github.com/JohnOgbonna/johnogbonna.com',
-    liveLink: 'https://johnogbonna.com/'
+    liveLink: 'https://johnogbonna.site/'
 }
 
 export const randomNumbers: project = {
     id: 'randomNumbers',
     name: 'Random Numbers',
     description: 'A web application that generates random numbers based on select user constraints',
-    toolsUsed: ['HTML', 'CSS', 'Javascript'],
+    toolsUsed: ['HTML', 'CSS', 'Javascript', 'Firebase'],
     images: Projects.RandomNumbers,
     videoSrc: '',
     repositoryLink: 'https://github.com/JohnOgbonna/random-numbers',

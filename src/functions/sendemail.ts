@@ -26,7 +26,7 @@ function generateHtml(name: string, message: string) {
                     style="background-color: inherit; border: 1px solid #DC2626;">
                     <tr>
                         <td align="left" style="font-size: 16px; color: inherit;">
-                            <h2 style="font-weight: bold; margin-top: 0;">Dear ${name}, <br>Thanks for visiting Johnogbonna.dev!</h2>
+                            <h2 style="font-weight: bold; margin-top: 0;">Dear ${name}, <br>Thanks for visiting johnogbonna.com!</h2>
                             <p>Hi, ${name}!</p>
                             <p>I appreciate you taking the time to visit my website and leaving me a message!</p>
                             <p><span style="font-weight: bold; text-decoration: underline;">Your Message:</span>${' ' + message}</p>
