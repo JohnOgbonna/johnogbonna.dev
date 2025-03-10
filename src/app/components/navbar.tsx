@@ -89,6 +89,7 @@ function Sections({ enabled, isEnabled }: SectionProps) {
             </li>
           )
         })}
+        <li key={"dev.to"} className={`md:pr-4 md:last:pr-0 hover:underline ${smallListStyles} sm:text-white sm:text-[1.2rem]`}><Link href={'https://dev.to/johnogbonna'} target="_blank">Dev.to</Link></li>
         <li key={'linkToAalternateSection'} className={`cursor-pointer hover:underline md:border-l-2 md:border-red-600 md:pl-3 ${smallListStyles} sm:text-[1.2rem]`}
           onClick={() => isEnabled(false)}>
           <Link href={`${aboutSection ? '/' : '/about'}`}>{aboutSection ? 'Home Page' : 'About Me'}</Link></li>

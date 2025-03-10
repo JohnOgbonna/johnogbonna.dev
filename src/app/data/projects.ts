@@ -54,5 +54,24 @@ export const devSite: project = {
     repositoryLink: 'https://github.com/JohnOgbonna/johnogbonna.dev',
 }
 
+export const cruncheeMunchiesV2: project = {
+    id: 'cruncheeMunchiesV2',
+    name: 'New and Improved Crunchee Munchies Website',
+    description: "A full stack app for viewing Crunchee Munchies products and requesting orders. Improved UI and customer experience. Updated with Next.js and utilizing AWS services such as S3, Lambda, SES, and hosted with AWS Amplify. Integrated with Supabase for Postgres database management and order tracking. A much needed upgrade ensuring better performance, security, and scalability.",
+    toolsUsed: ['HTML', 'Tailwind CSS', 'Typescript', 'React.js', 'Next.js', 'Supabase', 'AWS Amplify', 'AWS S3', 'AWS Lambda', 'AWS SES'],
+    images: Projects.CruncheeMunchiesV2,
+    videoSrc: '',
+    repositoryLink: 'https://github.com/JohnOgbonna/crunchee-munchies-v2',
+    liveLink: 'https://crunchee-munchies.com',
+}
 
-export const projectsList: project[] = [cruncheeMunchies, chatSocket, bioWebsite, randomNumbers, devSite]
+export const devPortfolioTemplate: project = {
+    id: 'devPortfolioTemplate',
+    name: 'Dev Portfolio Template',
+    description: 'A website template for cloud and Fullstack and Cloud developers to showcase their work. Built with HTML, CSS, and Javascript',
+    toolsUsed: ['HTML', 'CSS', 'Javascript'],
+    images: Projects.DevPortfolioTemplate,
+    videoSrc: '',
+    repositoryLink: 'https://github.com/JohnOgbonna/cloud_portfolio',
+}
+export const projectsList: project[] = [cruncheeMunchiesV2, devPortfolioTemplate, cruncheeMunchies, chatSocket, bioWebsite, randomNumbers, devSite]

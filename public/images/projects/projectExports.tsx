@@ -12,17 +12,28 @@ import CruncheeMunchies3 from './CruncheeMunchies3.png'
 import RandomNumbers0 from './RandomNumbers0.png'
 import DevSite0 from './DevSite0.png'
 import DevSite1 from './DevSite1.png'
+import CruncheeMunchiesV2_0 from './CruncheeMunchiesV2-0.png'
+import CruncheeMunchiesV2_1 from './CruncheeMunchiesV2-1.png'
+import CruncheeMunchiesV2_2 from './CruncheeMunchiesV2-2.png'
+import CruncheeMunchiesV2_3 from './CruncheeMunchiesV2-3.png'
+import CruncheeMunchiesV2_4 from './CruncheeMunchiesV2-4.png'
+import DevPortfolioTemplate0 from './DevPortfolioTemplate0.png'
+
 
 export const CruncheeMunchies = [CruncheeMunchies0, CruncheeMunchies1, CruncheeMunchies2, CruncheeMunchies3]
 export const ChatSocket = [ChatSocket0, ChatSocket1, ChatSocket2, ChatSocket3]
 export const BioWebsite = [BioWebsite0, BioWebsite1, BioWebsite2]
 export const RandomNumbers = [RandomNumbers0]
 export const DevSite = [DevSite0, DevSite1]
+export const CruncheeMunchiesV2 = [CruncheeMunchiesV2_0, CruncheeMunchiesV2_1, CruncheeMunchiesV2_2, CruncheeMunchiesV2_3, CruncheeMunchiesV2_4]
+export const DevPortfolioTemplate = [DevPortfolioTemplate0]
 
 export const Projects = {
-    CruncheeMunchies: CruncheeMunchies,
-    ChatSocket: ChatSocket,
-    BioWebsite: BioWebsite,
-    RandomNumbers: RandomNumbers,
-    DevSite: DevSite
+    CruncheeMunchies,
+    ChatSocket,
+    BioWebsite,
+    RandomNumbers,
+    DevSite,
+    CruncheeMunchiesV2,
+    DevPortfolioTemplate
 }

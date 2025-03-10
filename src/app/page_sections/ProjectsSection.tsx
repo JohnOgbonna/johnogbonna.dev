@@ -81,7 +81,7 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                         />
                             : <div className={`ml-[2rem]`}></div>}
                         <div className={``}>
-                            <Image src={images[displayImage]} alt={name} className={`rounded-[5px] duration-700 transition-all ease-in-out  sm:w-fit sm:max-h-[500px] md:height-[]`} />
+                            <Image src={images[displayImage]} alt={name} className={`rounded-[5px] duration-700 transition-all ease-in-out  sm:w-fit sm:max-h-[500px] md:height-[]`} priority={true} />
                         </div>
                         {displayImage < images.length - 1 ? <Image src={pageIcons.scrollArrow} alt='rightarArow' className={`w-8 rotate-180 md:w-12 hover:scale-110 duration-300 ${displayImage < images.length - 0 ? '' : 'mr-[2rem]'}`}
                             onClick={nextImage} />
@@ -139,6 +139,7 @@ function ProjectSectionLargeView(props: ProjectPanelProps) {
                     onClick={() => props.onclick(null)}
                     className={`md:self-start text-[1.5rem] fixed sm:top-5 md:top-20 right-5 cursor-pointer w-[1.2rem] lg:static lg:top-0 hover:scale-125 duration-500 transition-all ease-in-out`}
                     alt="close"
+                    priority={true}
                 />
             </div>
         </div>

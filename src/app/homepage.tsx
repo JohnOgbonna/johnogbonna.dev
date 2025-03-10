@@ -35,7 +35,12 @@ export default function HomePage() {
                             >Fullstack </span> • <span className={`hover:underline cursor-pointer`}>Cloud</span></motion.h1>
                             <p className={`max-w-[400px]`}>{`I'm a Full Stack Developer, capable of working in Front-End and Back-End systems, with Cloud experience and AWS Developer Associate Certification`}</p>
                         </div>
-                        <Link href={`/about`}><div className={`flex items-center mt-6`}>
+                        <Link href={`https://dev.to/johnogbonna`} target="_blank"><div className={`flex items-center mt-6`}>
+                            <p className={`mr-4`}>See My Articles on Dev.to</p>
+                            <Image src={navIcons.rightArrow} alt='rightarrow' className={`w-8`} />
+                        </div>
+                        </Link>
+                        <Link href={`/about`}><div className={`flex items-center mt-4`}>
                             <p className={`mr-4`}>See More About me</p>
                             <Image src={navIcons.rightArrow} alt='rightarrow' className={`w-8`} />
                         </div>

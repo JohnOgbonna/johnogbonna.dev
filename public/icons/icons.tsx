@@ -8,6 +8,7 @@ import linkedin from '../../public/icons/linkedin.svg'
 import email from '../../public/icons/email.svg'
 import downArrow from '../../public/icons/down-arrow.svg'
 import upArrow from '../../public/icons/up-arrow.svg'
+import dev_to from '../../public/icons/dev_to.svg'
 
 
 export const navIcons = {
@@ -39,5 +40,10 @@ export const contactIcons = {
         name: "Github",
         icon: github,
         link: "https://github.com/JohnOgbonna"
+    },
+    dev_to: {
+        name: "Dev.to",
+        icon: dev_to,
+        link: "https://dev.to/johnogbonna"
     }
 }
